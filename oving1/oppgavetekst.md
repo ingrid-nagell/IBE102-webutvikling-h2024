@@ -9,25 +9,24 @@ Dernest, når du føler at du fikk dette til, bør du forsøke å lage et nytt l
 
 Lag et nytt sted (mappe) som du kaller "rødlisteart" der det ligger en "index.html".  Når en åpner index.html i nettleseren får en følgende brukeropplevelse:
 
-struktur og innhold
-det norske navnet på arten står som hovedoverskrift med h1
-bildet av dyret står under overskriften
+## struktur og innhold
+* det norske navnet på arten står som hovedoverskrift med h1
+* bildet av dyret står under overskriften
 bildet skal ligge i undermappa "images",
 hent det gjerne fra Wikimedia der alle bilder er lisensiert for fri bruk
-under bildet står et avsnitt (p) med h2-overskrift som sier "Opplysninger"
+* under bildet står et avsnitt (p) med h2-overskrift som sier "Opplysninger"
 i dette avsnittet med opplysninger vises en kulepunktliste (ul) med linje for
 latinsk navn
 utbredelse, hvor dyret finnes
 antall individer
-i neste avsnitt skal det være en h2-overskrift om "Atferd"
+* i neste avsnitt skal det være en h2-overskrift om "Atferd"
 innholdet limes inn fra Wikipedia
-struktur lagres som "index.html" i rotmappa for nettstedet
-utseende
-alle h1 skal sentreres
-alle avsnitt (p) skal ha gul bakgrunnsfarge
-alle bilder skal ha en 10 pixel bred heltrukken ramme
-stilfila skal hete "dyrestil.css" og ligge i "styles"-mappa
-interaktivitet
-når bildet trykkes med venstre musknapp (click event) skal bildet byttes til et annet, som i eksemplet fra Mozilla
-koden skal hete "dyreprogram.js" og ligge i "scripts"-mappa.
-Bruk gjerne diskusjonen under for å få hjelp.
+* struktur lagres som "index.html" i rotmappa for nettstedet
+## utseende
+* alle h1 skal sentreres
+* alle avsnitt (p) skal ha gul bakgrunnsfarge
+* alle bilder skal ha en 10 pixel bred heltrukken ramme
+* stilfila skal hete "dyrestil.css" og ligge i "styles"-mappa
+## interaktivitet
+* når bildet trykkes med venstre musknapp (click event) skal bildet byttes til et annet, som i eksemplet fra Mozilla
+* koden skal hete "dyreprogram.js" og ligge i "scripts"-mappa.
