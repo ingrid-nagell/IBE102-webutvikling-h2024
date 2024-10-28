@@ -1,0 +1,163 @@
+<!-- Oblig 2
+Levert av Ingrid Nagell
+
+Løst alene, men ved bruk av Github Copilot Pro (extension i VScode, som jeg har tilgang på via jobb)
+Siden Copiloten foreslår kode/tekst inline i programmet jeg jobber, er det ikke noe dialog å ta vare på, men jeg har forsøkt å beskrive der Copilot har generert tekst og kode for meg.
+
+Jeg valgte å bruke copiloten aktivt for denne oblig'en og det sparte meg for en del tid og flere google søk.
+
+GitHub copilot dolumentasjon: https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot?tool=vscode
+-->
+<!DOCTYPE html>
+<!-- beregninger med to tall -->
+<html>
+  <head>
+    <title>Beregninger med to tall</title>
+    <style>
+      /* B) style for rosa bakgrunn når input er 'invalid'*/
+      .invalid {
+          background-color: pink;
+      }
+      /* D) style for siste knapp trykket på */
+      .buttonLastPressed {
+          background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- B) Legger til felles klasse -->
+    <!-- C) Endret til number (nå er ikke invalid-funksjonaliteten relevant lengre) -->
+    <input type="number" id="tall1" class="numberInput">
+    <input type="number" id="tall2" class="numberInput">
+    <br>
+    <button onclick="adder()">a+b</button>
+    <button onclick="subtraksjon()">a-b</button>
+    <button onclick="multiplikasjon()">a*b</button>
+    <button onclick="divisjon()">a/b</button>
+    <!-- Her spurte jeg github copilot om å generere tekst med sup-elementet -->
+    <button onclick="potensiering()">a<sup>b</sup></button>
+    <!-- A) del av løsning -->
+    <button onclick="heltallsdivisjon()">a//b</button>
+    <button onclick="modulus()">a%b</button>
+    <!-- E) Legg til en knapp som gjør at verdiene i tekst1 og tekst2 bytter plass -->
+    <button onclick="bytt()">Bytt</button>
+    <br>
+    Resultat:
+    <span id="resultatfelt"></span>
+
+    <script>
+      function adder() {
+        var el1 = document.getElementById("tall1");
+        var el2 = document.getElementById("tall2");
+        var t1 =parseFloat(el1.value);
+        var t2 =parseFloat(el2.value);
+        var utfelt = document.getElementById("resultatfelt");
+        utfelt.innerHTML = t1 + t2;
+      }
+
+      function divisjon() {
+        var el1 = document.getElementById("tall1");
+        var el2 = document.getElementById("tall2");
+        var t1 =parseFloat(el1.value);
+        var t2 =parseFloat(el2.value);
+        var utfelt = document.getElementById("resultatfelt");
+        utfelt.innerHTML = t1 / t2;
+      }
+
+      function multiplikasjon() {
+        var el1 = document.getElementById("tall1");
+        var el2 = document.getElementById("tall2");
+        var t1 =parseFloat(el1.value);
+        var t2 =parseFloat(el2.value);
+        var utfelt = document.getElementById("resultatfelt");
+        utfelt.innerHTML = t1 * t2;
+      }
+
+      function subtraksjon() {
+        var el1 = document.getElementById("tall1");
+        var el2 = document.getElementById("tall2");
+        var t1 =parseFloat(el1.value);
+        var t2 =parseFloat(el2.value);
+        var utfelt = document.getElementById("resultatfelt");
+        utfelt.innerHTML = t1 - t2;
+      }
+
+      function potensiering() {
+      var el1 = document.getElementById("tall1");
+      var el2 = document.getElementById("tall2");
+      var t1 = parseFloat(el1.value);
+      var t2 = parseFloat(el2.value);
+      var utfelt = document.getElementById("resultatfelt");
+      utfelt.innerHTML = Math.pow(t1, t2);
+      }
+
+      // Oppgave A, løst med GitHub Copilot i VScode
+      // Jeg ba copiloten legge til funksjoner for heltall og modulus knappen.
+      function heltallsdivisjon () {
+        var el1 = document.getElementById("tall1");
+        var el2 = document.getElementById("tall2");
+        var t1 = parseFloat(el1.value);
+        var t2 = parseFloat(el2.value);
+        var utfelt = document.getElementById("resultatfelt");
+        // copilot foreslo å bruke math.floor, men det gir ikke nøyaktig heltallsdivisjon
+        // utfelt.innerHTML = Math.floor(t1 / t2);
+        // jeg ba den løse oppgaven uten å bruke Math.floor og fikk denne løsningen som fjerner decimalene etter divisjonen:
+        utfelt.innerHTML = (t1 / t2) | 0;
+      }
+
+      function modulus() {
+        var el1 = document.getElementById("tall1");
+        var el2 = document.getElementById("tall2");
+        var t1 = parseFloat(el1.value);
+        var t2 = parseFloat(el2.value);
+        var utfelt = document.getElementById("resultatfelt");
+        utfelt.innerHTML = t1 % t2;
+      }
+
+      // B) Legger til validering av input
+      // Jeg ba Copilot validere alle input elementer i dokumentet (la til en klasse):
+      function validateAllInputs() {
+          var inputs = document.querySelectorAll('.numberInput');
+          inputs.forEach(function(input) {
+              if (isNaN(input.value)) {
+                  input.classList.add('invalid');
+              } else {
+                  input.classList.remove('invalid');
+              }
+          });
+      }
+      document.querySelectorAll('.numberInput').forEach(function(input) {
+          input.addEventListener('input', validateAllInputs);
+      });
+
+      // D) Legger til validering av input
+      // Jeg ba Copilot: "Add a function to check what button was last pressed"
+      // Function to track the last pressed button
+      function trackLastPressedButton(event) {
+        // Remove the class from all buttons
+        document.querySelectorAll('button').forEach(function(button) {
+          button.classList.remove('buttonLastPressed');
+        });
+        // Add the class to the clicked button
+        event.target.classList.add('buttonLastPressed');
+      }
+
+      // Add event listeners to all buttons
+      document.querySelectorAll('button').forEach(function(button) {
+        button.addEventListener('click', trackLastPressedButton);
+      });
+      // Det var litt kult at den brukte style klassen, buttonLastPressed, som jeg allerede hadde definert i css'en
+
+      // E) Legger til en knapp som gjør at verdiene i tekst1 og tekst2 bytter plass
+      function bytt() {
+        var el1 = document.getElementById("tall1");
+        var el2 = document.getElementById("tall2");
+        var t1 = el1.value;
+        var t2 = el2.value;
+        el1.value = t2;
+        el2.value = t1;
+      }
+    </script>
+
+  </body>
+</html>
